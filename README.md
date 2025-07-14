@@ -37,5 +37,34 @@ This will scrape all quotes and save them to `quotes.db`.
 - Modify `scraper.py` to change scraping logic or database handling.
 - Use `models.py` to adjust database schema.
 
+## API
+This project includes a FastAPI-based web API to access the scraped quotes data.
+
+### Endpoints
+- `GET /` — Welcome message
+- `GET /quotes/` — List quotes (supports `skip` and `limit` query parameters)
+- `GET /quotes/{quote_id}` — Get a specific quote by ID
+
+### Response Models
+- Each quote includes its text, author, and associated tags.
+
+### How to Run the API
+1. Install dependencies (see above).
+2. Start the API server:
+   ```bash
+   uvicorn main:app --reload
+   ```
+3. Access the interactive docs at [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+
+### Example Usage
+- List first 10 quotes:
+  ```bash
+  curl http://127.0.0.1:8000/quotes/
+  ```
+- Get quote with ID 1:
+  ```bash
+  curl http://127.0.0.1:8000/quotes/1
+  ```
+
 ## License
 MIT
